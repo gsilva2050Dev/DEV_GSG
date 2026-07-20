@@ -13,11 +13,14 @@
   <nav class="nav container">
     <a href="#home" class="logo">GSG</a>
     <ul class="nav-links">
-      <li><a href="#about">Acerca de</a></li>
-      <li><a href="#focus">Enfoque</a></li>
-      <li><a href="#projects">Proyectos</a></li>
-      <li><a href="#contact">Contacto</a></li>
+      <li><a href="#about" data-i18n="nav.about">Acerca de</a></li>
+      <li><a href="#focus" data-i18n="nav.focus">Enfoque</a></li>
+      <li><a href="#experience" data-i18n="nav.experience">Trayectoria</a></li>
+      <li><a href="#education" data-i18n="nav.education">Formación</a></li>
+      <li><a href="#projects" data-i18n="nav.projects">Proyectos</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Contacto</a></li>
     </ul>
+    <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Cambiar idioma">ES</button>
     <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Cambiar tema" aria-pressed="false">
       <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
         <circle cx="12" cy="12" r="4"></circle>
@@ -47,76 +50,159 @@
       <img src="assets/gustavo.jpg" alt="Foto de Gustavo Silva Gutiérrez" width="220" height="220">
     </div>
     <div class="hero-text">
-      <p class="eyebrow">Hola, soy</p>
+      <p class="eyebrow" data-i18n="hero.eyebrow">Hola, soy</p>
       <h1>Gustavo Silva Gutiérrez</h1>
       <p class="role">Senior Dev &amp; AI Manager</p>
-      <p class="hero-lead">Convierto la estrategia de transformación digital en ejecución real, con foco en IA generativa y agéntica.</p>
+      <p class="hero-lead" data-i18n="hero.lead">Convierto la estrategia de transformación digital en ejecución real, con foco en IA generativa y agéntica.</p>
       <div class="hero-cta">
-        <a href="#contact" class="btn btn-primary">Hablemos</a>
-        <a href="#about" class="btn btn-ghost">Conóceme</a>
+        <a href="#contact" class="btn btn-primary" data-i18n="hero.cta.talk">Hablemos</a>
+        <a href="#about" class="btn btn-ghost" data-i18n="hero.cta.about">Conóceme</a>
       </div>
     </div>
   </section>
 
   <section id="about" class="about container">
-    <h2>Acerca de</h2>
+    <h2 data-i18n="about.title">Acerca de</h2>
     <div class="about-content">
-      <p>Ayudo a las organizaciones a convertir la estrategia de transformación en ejecución real. Durante más de 20 años he trabajado en entornos internacionales de telecomunicaciones, plataformas corporativas —incluyendo CRM Salesforce— y ecosistemas de innovación impulsando la digitalización de servicios, la evolución del modelo operativo y programas complejos de transformación, liderando equipos de hasta 25 personas y portafolios de más de 15 iniciativas anuales.</p>
+      <p data-i18n="about.p1">Ayudo a las organizaciones a convertir la estrategia de transformación en ejecución real. Durante más de 20 años he trabajado en entornos internacionales de telecomunicaciones, plataformas corporativas —incluyendo CRM Salesforce— y ecosistemas de innovación impulsando la digitalización de servicios, la evolución del modelo operativo y programas complejos de transformación, liderando equipos de hasta 25 personas y portafolios de más de 15 iniciativas anuales.</p>
 
-      <p>Y es exactamente ahí donde aporto más valor. Suelo trabajar como puente entre arquitectura, delivery y stakeholders ejecutivos, conectando visión estratégica con ejecución operativa. Los equipos y plataformas bajo mi liderazgo han logrado reducciones de doble dígito en incidencias, crecimiento de doble dígito en desarrollos entregados, niveles de cumplimiento de SLA prácticamente absolutos y una autonomía de desarrollo cercana al máximo posible.</p>
+      <p data-i18n="about.p2">Y es exactamente ahí donde aporto más valor. Suelo trabajar como puente entre arquitectura, delivery y stakeholders ejecutivos, conectando visión estratégica con ejecución operativa. Los equipos y plataformas bajo mi liderazgo han logrado reducciones de doble dígito en incidencias, crecimiento de doble dígito en desarrollos entregados, niveles de cumplimiento de SLA prácticamente absolutos y una autonomía de desarrollo cercana al máximo posible.</p>
 
-      <p>Además, mantengo una relación activa con el ámbito universitario, participando en el desarrollo de capacidades digitales en nuevos profesionales. Estamos en un momento especialmente interesante para liderar transformación con impacto real.</p>
+      <p data-i18n="about.p3">Además, mantengo una relación activa con el ámbito universitario, participando en el desarrollo de capacidades digitales en nuevos profesionales. Estamos en un momento especialmente interesante para liderar transformación con impacto real.</p>
 
-      <blockquote class="highlight">
+      <blockquote class="highlight" data-i18n="about.quote">
         Me interesan posiciones donde pueda liderar iniciativas de modernización digital e impulsar la adopción real de la inteligencia artificial —generativa y agéntica— como palanca de transformación en las organizaciones.
       </blockquote>
     </div>
 
     <div class="stats">
-      <div class="stat"><span class="stat-number">20+</span><span class="stat-label">años de experiencia internacional</span></div>
-      <div class="stat"><span class="stat-number">25</span><span class="stat-label">personas lideradas por equipo</span></div>
-      <div class="stat"><span class="stat-number">15+</span><span class="stat-label">iniciativas anuales gestionadas</span></div>
-      <div class="stat"><span class="stat-number">↓↓</span><span class="stat-label">reducción de doble dígito en incidencias</span></div>
+      <div class="stat"><span class="stat-number">20+</span><span class="stat-label" data-i18n="stats.years.label">años de experiencia internacional</span></div>
+      <div class="stat"><span class="stat-number">25</span><span class="stat-label" data-i18n="stats.team.label">personas lideradas por equipo</span></div>
+      <div class="stat"><span class="stat-number">15+</span><span class="stat-label" data-i18n="stats.initiatives.label">iniciativas anuales gestionadas</span></div>
+      <div class="stat"><span class="stat-number">99.99%</span><span class="stat-label" data-i18n="stats.sla.label">cumplimiento de SLA</span></div>
     </div>
   </section>
 
   <section id="focus" class="focus container">
-    <h2>Enfoque</h2>
-    <p class="section-lead">Hoy el cambio está ocurriendo en cuatro frentes muy claros:</p>
+    <h2 data-i18n="focus.title">Enfoque</h2>
+    <p class="section-lead" data-i18n="focus.lead">Hoy el cambio está ocurriendo en cuatro frentes muy claros:</p>
     <div class="focus-grid">
       <div class="focus-card">
-        <h3>IA generativa y agéntica</h3>
-        <p>Adopción práctica de IA generativa y agéntica en procesos y productos reales.</p>
+        <h3 data-i18n="focus.ai.title">IA generativa y agéntica</h3>
+        <p data-i18n="focus.ai.desc">Adopción práctica de IA generativa y agéntica en procesos y productos reales.</p>
       </div>
       <div class="focus-card">
-        <h3>Gobernanza</h3>
-        <p>Gobernanza de IA y de plataformas, con foco en riesgo, calidad y escalabilidad.</p>
+        <h3 data-i18n="focus.gov.title">Gobernanza</h3>
+        <p data-i18n="focus.gov.desc">Gobernanza de IA y de plataformas, con foco en riesgo, calidad y escalabilidad.</p>
       </div>
       <div class="focus-card">
-        <h3>Automatización</h3>
-        <p>Automatización organizativa que libera capacidad y acelera la ejecución.</p>
+        <h3 data-i18n="focus.auto.title">Automatización</h3>
+        <p data-i18n="focus.auto.desc">Automatización organizativa que libera capacidad y acelera la ejecución.</p>
       </div>
       <div class="focus-card">
-        <h3>Modernización</h3>
-        <p>Modernización de plataformas para sostener el ritmo de la transformación.</p>
+        <h3 data-i18n="focus.mod.title">Modernización</h3>
+        <p data-i18n="focus.mod.desc">Modernización de plataformas para sostener el ritmo de la transformación.</p>
       </div>
     </div>
   </section>
 
+  <section id="experience" class="experience container">
+    <h2 data-i18n="exp.title">Trayectoria</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2025 – 2026</div>
+        <div class="timeline-content">
+          <h3>Salesforce Development &amp; Operations Manager</h3>
+          <p class="timeline-org">Telefónica · Madrid</p>
+          <p data-i18n="exp.role1.desc">Estrategia y operación de la plataforma corporativa Salesforce; evolución del modelo operativo CRM y adopción de IA. Equipo de 10 personas.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2017 – 2025</div>
+        <div class="timeline-content">
+          <h3>Digitalization and Service Development Manager</h3>
+          <p class="timeline-org">Telefónica · Madrid</p>
+          <p data-i18n="exp.role2.desc">Portfolio de +15 iniciativas anuales de digitalización de servicios en España, LATAM y EE. UU., combinando equipos internos y partners estratégicos.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2015 – 2018</div>
+        <div class="timeline-content">
+          <h3>Operating Model &amp; Project Implementation Manager</h3>
+          <p class="timeline-org">Telefónica · Madrid</p>
+          <p data-i18n="exp.role3.desc">Diseño e implementación de modelos operativos de cliente y mejoras operativas continuas, liderando un equipo de 15 personas.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2013 – 2015</div>
+        <div class="timeline-content">
+          <h3>Senior Telco Consultant</h3>
+          <p class="timeline-org">AXPE Technologies · Madrid</p>
+          <p data-i18n="exp.role4.desc">Consultor en la cuenta de Telefónica International Wholesale Services, diseñando modelos operativos para entornos telco complejos.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2009 – 2013</div>
+        <div class="timeline-content">
+          <h3>Presales &amp; Product Marketing</h3>
+          <p class="timeline-org">Colt Technology Services · Madrid</p>
+          <p data-i18n="exp.role5.desc">Presales Specialist en servicios de voz B2B/OSS-BSS y gestión de producto en Voz y Servicios Gestionados.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2006 – 2008</div>
+        <div class="timeline-content">
+          <h3>Project Engineer</h3>
+          <p class="timeline-org">Bit Computación · Venezuela</p>
+          <p data-i18n="exp.role6.desc">Primera etapa profesional implementando soluciones tecnológicas para clientes, en Venezuela.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="education container">
+    <h2 data-i18n="edu.title">Formación y Docencia</h2>
+    <div class="education-grid">
+      <div class="education-card">
+        <h3 data-i18n="edu.item1">MBA</h3>
+        <p class="education-org">EUDE Business School, Madrid</p>
+      </div>
+      <div class="education-card">
+        <h3 data-i18n="edu.item2">Máster en Ingeniería Biomédica y TIC</h3>
+        <p class="education-org">Universidad Rey Juan Carlos</p>
+      </div>
+      <div class="education-card">
+        <h3 data-i18n="edu.item3">Máster en Redes de Telecomunicaciones</h3>
+        <p class="education-org">Universidad Rey Juan Carlos</p>
+      </div>
+      <div class="education-card">
+        <h3 data-i18n="edu.item4">Ingeniero en Electrónica y Telecomunicaciones</h3>
+        <p class="education-org">Universidad Rafael Belloso Chacín, Venezuela</p>
+      </div>
+    </div>
+
+    <div class="teaching">
+      <h3 data-i18n="edu.teaching.title">Docencia</h3>
+      <p data-i18n="edu.teaching.nebrija">Profesor asociado en la Universidad Nebrija (2022–actualidad), impartiendo "Nuevas Tecnologías y la Sociedad de la Información" en los Grados de Diseño Digital y Multimedia, Comunicación y Protocolo, y Marketing Digital.</p>
+      <p data-i18n="edu.teaching.zulia">Profesor asociado en la Universidad del Zulia, Venezuela (2006–2008), docencia universitaria de pregrado.</p>
+      <p class="languages" data-i18n="edu.languages">Español (nativo) · Inglés (C1)</p>
+    </div>
+  </section>
+
   <section id="projects" class="projects container">
-    <h2>Proyectos</h2>
-    <p class="section-lead">Aprendiendo y compartiendo...</p>
+    <h2 data-i18n="projects.title">Proyectos</h2>
+    <p class="section-lead" data-i18n="projects.lead">Aprendiendo y compartiendo...</p>
     <div class="projects-grid">
       <div class="project-card placeholder">
-        <h3>Próximamente</h3>
-        <p>Esta sección está en construcción. Pronto encontrarás aquí proyectos y trabajos concretos.</p>
+        <h3 data-i18n="projects.placeholder.title">Próximamente</h3>
+        <p data-i18n="projects.placeholder.desc">Esta sección está en construcción. Pronto encontrarás aquí proyectos y trabajos concretos.</p>
       </div>
     </div>
   </section>
 
   <section id="contact" class="contact container">
-    <h2>Contacto</h2>
-    <p class="section-lead">¿Hablamos de tu próxima transformación digital?</p>
+    <h2 data-i18n="contact.title">Contacto</h2>
+    <p class="section-lead" data-i18n="contact.lead">¿Hablamos de tu próxima transformación digital?</p>
     <div class="contact-links">
       <a href="mailto:gsilva2050@gmail.com" class="contact-link">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -148,6 +234,7 @@
   <p class="container">© <span id="year"></span> Gustavo Silva Gutiérrez</p>
 </footer>
 
+<script src="js/i18n.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>

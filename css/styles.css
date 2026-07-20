@@ -43,7 +43,9 @@
 
 /* ---------- Reset ---------- */
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -99,6 +101,25 @@ p { margin: 0 0 1em; }
 }
 .nav-links a:hover { color: var(--accent); }
 
+.lang-toggle {
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+  border-radius: 999px;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  margin-left: 1rem;
+}
+.lang-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
 .theme-toggle {
   border: 1px solid var(--border);
   background: var(--bg-alt);
@@ -110,7 +131,7 @@ p { margin: 0 0 1em; }
   justify-content: center;
   cursor: pointer;
   color: var(--accent);
-  margin-left: 1rem;
+  margin-left: 0.75rem;
 }
 .theme-toggle .icon { width: 20px; height: 20px; }
 .theme-toggle .icon-moon { display: none; }
@@ -273,6 +294,82 @@ section h2 {
   color: var(--text-muted);
   margin: 0;
   font-size: 0.95rem;
+}
+
+/* ---------- Experience (timeline) ---------- */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-left: 2px solid var(--border);
+  padding-left: 1.5rem;
+}
+.timeline-item { position: relative; }
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -1.61rem;
+  top: 0.4rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.timeline-date {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-2);
+  margin-bottom: 0.25rem;
+}
+.timeline-content h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.15rem;
+}
+.timeline-org {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+.timeline-content p:not(.timeline-org) {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* ---------- Education ---------- */
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+.education-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+.education-card h3 {
+  font-size: 1rem;
+  color: var(--text);
+}
+.education-org {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+.teaching h3 {
+  font-size: 1.1rem;
+  color: var(--accent-2);
+}
+.teaching p {
+  color: var(--text-muted);
+}
+.teaching .languages {
+  color: var(--text);
+  font-weight: 600;
+  margin-top: 1rem;
 }
 
 /* ---------- Projects ---------- */

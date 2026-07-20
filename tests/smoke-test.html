@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>pending</title></head>
+<body>
+<iframe id="f" src="/index.html" style="width:1280px;height:900px"></iframe>
+<script>
+document.getElementById('f').addEventListener('load', () => {
+  const results = [];
+  const check = (name, pass) => results.push({ name, pass: !!pass });
+
+  try {
+    const doc = document.getElementById('f').contentDocument;
+    const win = document.getElementById('f').contentWindow;
+    const html = doc.documentElement;
+    const toggle = doc.getElementById('theme-toggle');
+
+    check('theme-toggle button exists', toggle);
+    check('data-theme set on initial load', html.getAttribute('data-theme'));
+
+    const before = html.getAttribute('data-theme');
+    toggle.click();
+    const after = html.getAttribute('data-theme');
+    check('click flips data-theme', before !== after);
+    check('aria-pressed matches dark state', toggle.getAttribute('aria-pressed') === String(after === 'dark'));
+    check('theme choice persisted to localStorage', win.localStorage.getItem('theme') === after);
+
+    toggle.click();
+    check('second click flips back', html.getAttribute('data-theme') === before);
+
+    const navToggle = doc.getElementById('nav-toggle');
+    const navLinks = doc.querySelector('.nav-links');
+    check('nav-toggle exists', navToggle);
+    navToggle.click();
+    check('mobile nav opens on click', navLinks.classList.contains('open'));
+    navLinks.querySelector('a').click();
+    check('mobile nav closes after link click', !navLinks.classList.contains('open'));
+
+    const img = doc.querySelector('.hero-photo img');
+    check('hero image loaded', img && img.complete && img.naturalWidth > 0);
+
+    const year = doc.getElementById('year').textContent;
+    check('footer year populated', /^\d{4}$/.test(year));
+
+    ['about', 'focus', 'experience', 'education', 'projects', 'contact'].forEach(id => {
+      check(`section #${id} exists`, doc.getElementById(id));
+    });
+
+    const langToggle = doc.getElementById('lang-toggle');
+    const aboutTitle = doc.querySelector('[data-i18n="about.title"]');
+    check('lang-toggle exists', langToggle);
+
+    const langBefore = html.getAttribute('lang');
+    const textBefore = aboutTitle.textContent;
+    langToggle.click();
+    const langAfter = html.getAttribute('lang');
+    check('click flips html[lang]', langBefore !== langAfter);
+    check('translated text changes on lang switch', aboutTitle.textContent !== textBefore);
+    check('lang persisted to localStorage', win.localStorage.getItem('lang') === langAfter);
+
+    langToggle.click();
+    check('second click flips lang back', html.getAttribute('lang') === langBefore);
+    check('translated text restored', aboutTitle.textContent === textBefore);
+
+    check('timeline has 6 entries', doc.querySelectorAll('.timeline-item').length === 6);
+    check('education has 4 entries', doc.querySelectorAll('.education-card').length === 4);
+
+    const allPass = results.every(r => r.pass);
+    document.title = (allPass ? 'ALL_PASS' : 'SOME_FAIL') + ' :: ' + JSON.stringify(results);
+  } catch (e) {
+    document.title = 'ERROR :: ' + e.message;
+  }
+});
+</script>
+</body>
+</html>

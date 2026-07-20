@@ -1,20 +1,19 @@
 (() => {
   const root = document.documentElement;
   const toggle = document.getElementById('theme-toggle');
-  const stored = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
-  if (stored) {
-    root.setAttribute('data-theme', stored);
-    toggle.setAttribute('aria-pressed', String(stored === 'dark'));
-  }
+  const applyTheme = theme => {
+    root.setAttribute('data-theme', theme);
+    toggle.setAttribute('aria-pressed', String(theme === 'dark'));
+  };
+
+  applyTheme(localStorage.getItem('theme') || (prefersDark.matches ? 'dark' : 'light'));
 
   toggle.addEventListener('click', () => {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const current = root.getAttribute('data-theme') || (prefersDark ? 'dark' : 'light');
-    const next = current === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
     localStorage.setItem('theme', next);
-    toggle.setAttribute('aria-pressed', String(next === 'dark'));
   });
 
   const navToggle = document.getElementById('nav-toggle');
