@@ -61,7 +61,33 @@ document.getElementById('f').addEventListener('load', () => {
     check('second click flips lang back', html.getAttribute('lang') === langBefore);
     check('translated text restored', aboutTitle.textContent === textBefore);
 
-    check('timeline has 6 entries', doc.querySelectorAll('.timeline-item').length === 6);
+    check('hero photo is the profile asset', img && /gustavo-profile\.jpg/.test(img.getAttribute('src')));
+    check('hero photo shows full body 270x480 (9:16, no distortion)', img && Math.round(img.getBoundingClientRect().width) === 270 && Math.round(img.getBoundingClientRect().height) === 480 && Math.abs(img.naturalWidth / img.naturalHeight - 270 / 480) < 0.01);
+    check('panels use 85vh min-height (-15% spacing), hero 100vh', (() => { const h = win.innerHeight; const p = Math.round(doc.getElementById('about').getBoundingClientRect().height); return p >= Math.round(h * 0.85) && Math.round(doc.getElementById('home').getBoundingClientRect().height) >= h; })());
+    check('hero photo is a rounded square, not a circle', img && parseFloat(win.getComputedStyle(img).borderTopLeftRadius) > 0 && win.getComputedStyle(img).borderTopLeftRadius !== '50%');
+    check('Arial is the body font', /Arial/.test(win.getComputedStyle(doc.body).fontFamily));
+    check('Arial is the heading font', /Arial/.test(win.getComputedStyle(doc.querySelector('h1')).fontFamily));
+    check('brand logo badge has blue S', doc.querySelector('.logo .s'));
+    check('brand navy applied in dark theme', (() => { toggle.click(); const bg = win.getComputedStyle(doc.documentElement).getPropertyValue('--bg').trim().toLowerCase(); const dark = html.getAttribute('data-theme') === 'dark'; toggle.click(); return dark ? bg === '#0b1f3a' : true; })());
+    const bandImgs = [...doc.querySelectorAll('.band .band-img')];
+    check('7 photo bands (hero top + 6 between sections)', bandImgs.length === 7);
+    check('bands sit between every pair of sections', [...doc.querySelectorAll('main > *')].map(n => n.tagName === 'FIGURE' ? 'F' : 'S').join('') === 'FSFSFSFSFSFSFS');
+    check('no visible image names or numbering (no figcaption)', doc.querySelectorAll('figcaption, .band-cap').length === 0 && !/Fig\.|FIG\./.test(doc.body.innerText));
+    check('credits footer links to CREDITS.md and names CC BY authors', !!doc.querySelector('.site-footer a[href$="CREDITS.md"]') && /Lewinsky/.test(doc.querySelector('.site-footer').textContent) && /AtterseeMM/.test(doc.querySelector('.site-footer').textContent));
+    check('every band photo has an alt text', bandImgs.every(i => (i.getAttribute('alt') || '').length > 10));
+    check('top band photo loaded (real photo, not drawing)', bandImgs[0].complete && bandImgs[0].naturalWidth >= 1500);
+    check('band photos are jpg files', bandImgs.every(i => /\.jpg(\?|$)/.test(i.getAttribute('src'))));
+    check('no SVG illustrations left (only UI icons)', doc.querySelectorAll('main svg:not(.icon)').length === 0);
+    const heroEl = doc.getElementById('home');
+    heroEl.dispatchEvent(new win.PointerEvent('pointermove', { clientX: 100, clientY: 100, bubbles: true }));
+    check('portrait is fixed: no tilt on pointer move', img && img.style.transform === '');
+    const lang0 = html.getAttribute('lang');
+    const alt0 = bandImgs[0].getAttribute('alt');
+    langToggle.click();
+    check('band alt text translates with language', bandImgs[0].getAttribute('alt') !== alt0);
+    langToggle.click();
+    check('lang restored after band alt check', html.getAttribute('lang') === lang0);
+    check('experience carousel has 8 entries', doc.querySelectorAll('#exp-track .job').length === 8);
     check('education has 4 entries', doc.querySelectorAll('.education-card').length === 4);
 
     const allPass = results.every(r => r.pass);
